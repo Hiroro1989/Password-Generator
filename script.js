@@ -6,29 +6,27 @@ function writePassword() {
   var alphabet = "abcdefghijklmnopqrstuvwxyz";
   var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var numeric = "0123456789";
-  var specialCharcters = "~!@+=-"; //add later
+  var specialCharcters = "!#$%&')(*,+-./:;<>?=@[]^_}{|~"; 
 
   var password = generatePassword();
   window.alert("Your password is " + password);
-  console.log(password);
 
   //create function to generate password
   function generatePassword() {
     //ask length of password
-
     var lengthOfPassword = window.prompt(
       "Choose the length of password from 8 to 128"
     );
     if (8 <= lengthOfPassword && lengthOfPassword <= 128) {
-      var includeLowerCase = window.confirm("Do you want to include lowercase?");
-      var includeUpperCase = window.confirm("Do you want to include uppercase?");
-      var includeNumeric = window.confirm("Do you want to include numeric?");
-      var includeSpecailCaracters = window.confirm("Do you want to include specail caracters?");
+      var includeLowerCase = window.confirm("Do you want the password to include lowercase?\r\nYes : OK\r\nNo : Cancel");
+      var includeUpperCase = window.confirm("Do you want the password to include uppercase?\r\rYes : OK\r\nNo : Cancel");
+      var includeNumeric = window.confirm("Do you want to the password include numeric?\r\rYes : OK\r\nNo : Cancel");
+      var includeSpecailCaracters = window.confirm("Do you want the password to include specail caracters?\r\rYes : OK\r\nNo : Cancel");
       var randomIndex;
       password="";
 
 
-      //all
+      //all characters
       if (
         includeLowerCase &&
         includeUpperCase &&
@@ -42,7 +40,7 @@ function writePassword() {
         }
         return password;
       }
-      //3
+      //3 characters
       else if (
         !includeLowerCase &&
         includeUpperCase &&
@@ -95,7 +93,7 @@ function writePassword() {
         }
         return password;
       }
-      //2 
+      //2 characters
       else if (
         includeLowerCase &&
         includeUpperCase &&
@@ -190,7 +188,7 @@ function writePassword() {
         }
         return password;
       }
-      //1
+      //1 character
       else if (
         !includeLowerCase &&
         !includeUpperCase &&
@@ -237,11 +235,11 @@ function writePassword() {
         return password;
       } else {
         window.alert("Choose at least one character!");
-        generatePassword();
+        return;
       }
-    } else if(lengthOfPassword<8 || 128<lengthOfPassword || isNaN(lengthOfPassword)){
-      window.alert(lengthOfPassword + " is not correct input!");
-      generatePassword();
+    } else {
+      window.alert("Your input is not correct!");
+      return;
     }
   }
 
