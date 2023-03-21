@@ -9,7 +9,12 @@ function writePassword() {
   var specialCharcters = "!#$%&')(*,+-./:;<>?=@[]^_}{|~"; 
 
   var password = generatePassword();
+
+  if(password === undefined){
+    generatePassword();
+  }else{
   window.alert("Your password is " + password);
+  }
 
   //create function to generate password
   function generatePassword() {
